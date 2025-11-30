@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import favarite from "../assets/favarite.png";
 import share from "../assets/share.png";
 import star from "../assets/star.png";
+import { Link } from "react-router";
 const NewsCard = ({ onedata }) => {
- const [showFull, setShowFull] = useState(false);
-
+  const [showFull, setShowFull] = useState(false);
+ 
   const details = onedata.details;
-  console.log(onedata);
+  
+  const{id}=onedata;
+  
+ 
   return (
     <div>
       <section className="p-4">
@@ -41,9 +45,12 @@ const NewsCard = ({ onedata }) => {
               {details.length > 200 ? (
                 <>
                   {details.slice(0, 200)}...
-                  <span className="text-primary font-semibold cursor-pointer hover:underline">
+                  <Link
+                    to={`/NewsDetails/${id}`}
+                    className="text-primary font-semibold cursor-pointer hover:underline"
+                  >
                     Read More
-                  </span>
+                  </Link>
                 </>
               ) : (
                 details
